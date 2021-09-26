@@ -16,8 +16,8 @@ int	main()
 
 	i = 0;
 	fd = open("sq100", O_RDONLY);
-	printf("%lu\n", sizeof(fd));
-	printf("%lu\n", sizeof("sq100"));
+//	printf("%lu\n", sizeof(fd));
+//	printf("%lu\n", sizeof("sq100"));
 //	while (fd)
 //	{
 	printf("%s\n", get_next_line(fd));
