@@ -6,7 +6,7 @@
 /*   By: albgarci <albgarci@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 19:30:47 by albgarci          #+#    #+#             */
-/*   Updated: 2021/09/28 20:22:05 by albgarci         ###   ########.fr       */
+/*   Updated: 2021/09/29 15:35:46 by albgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,22 @@ char	*ft_strdup(const char *s1)
 	return (s);
 }
 
-void	*ft_memchr(const void *s, int c, size_t n)
+size_t	ft_strchr2(const char *s, int c)
 {
-	size_t			i;
-	unsigned char	*str;
+	size_t	i;
+	char	*s2;
 
 	i = 0;
-	c = (unsigned char) c;
-	str = (unsigned char *) s;
-	while (i < n)
+	c = (char) c;
+	s2 = (char *)s;
+	while (s2[i])
 	{
-		if (c == str[i])
-			return ((void *)(s + i));
+		if (s2[i] == c)
+			return (i);
 		i++;
 	}
+	if (s2[i] == c)
+		return (i);
 	return (0);
 }
 
@@ -71,6 +73,43 @@ size_t	ft_strlen(const char *s)
 	while (s[i])
 		i++;
 	return (i);
+}
+
+void	*ft_memcpy(void *dst, const void *src, size_t n)
+{
+	size_t	i;
+
+	i = 0;
+	src = (char *) src;
+	if (src == dst && src == 0 && n > 0)
+		return (dst);
+	while (i < n)
+	{
+		*(unsigned char *)(dst + i) = *(unsigned char *)(src + i);
+		i++;
+	}
+	return (dst);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	size;
+	char	*s2;
+
+	if (!s)
+		return (0);
+	if (start >= ft_strlen(s))
+		return (s2 = ft_strdup(""));
+	if (len >= ft_strlen(s))
+		size = ft_strlen(s) - start + 1;
+	else
+		size = len + 1;
+	s2 = malloc(sizeof(char) * size);
+	if (!s2)
+		return (0);
+	s2 = ft_memcpy(s2, (s + start), size);
+	s2[size - 1] = '\0';
+	return (s2);
 }
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
