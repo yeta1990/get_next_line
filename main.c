@@ -15,7 +15,7 @@ int	main()
 	i = 0;
 	fd = open("pepe", O_RDONLY);
 	printf("%s", get_next_line(fd));
-//	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
 //	printf("%s", get_next_line(fd));
 	
 }
