@@ -14,8 +14,20 @@ int	main()
 
 	i = 0;
 	fd = open("pepe", O_RDONLY);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
+
+
+// segfault when buffer size = size of lines
+	get_next_line(fd);
+//	get_next_line(fd);
+//	get_next_line(fd);
+//	close(fd);
+//	system("leaks a.out");
+//	printf("%i", fd);
+//	printf("%s", get_next_line(fd));
+//	printf("%s", get_next_line(fd));
+//	printf("%s", get_next_line(fd));
+//	printf("%i", fd);
 //	printf("%s", get_next_line(fd));
 	
+	close(fd);
 }
