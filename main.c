@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <fcntl.h>
 #include "get_next_line.c"
+//#include "get_next_line_rec.c"
 #include "get_next_line_utils.c"
 
 int	main()
@@ -17,17 +18,48 @@ int	main()
 
 
 // segfault when buffer size = size of lines
+
+/*	get_next_line(fd);
 	get_next_line(fd);
-//	get_next_line(fd);
-//	get_next_line(fd);
-//	close(fd);
-//	system("leaks a.out");
-//	printf("%i", fd);
-//	printf("%s", get_next_line(fd));
-//	printf("%s", get_next_line(fd));
-//	printf("%s", get_next_line(fd));
-//	printf("%i", fd);
-//	printf("%s", get_next_line(fd));
+	get_next_line(fd);
+
+	get_next_line(fd);
+	get_next_line(fd);
+	close(fd);
+	system("leaks a.out");
+return 1;
+*/	//	printf("%i", fd);
+
+	printf("%s", get_next_line(fd));
+
+	printf("%s", get_next_line(fd));
 	
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+
+	printf("%s", get_next_line(fd));
+	//	printf("%i", fd);
+//	get_next_line(fd);	
+	printf("%s", get_next_line(fd));
+
+
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
 	close(fd);
 }

@@ -12,13 +12,13 @@ char	*get_next_line(int fd)
 	char		*aux;
 	static char	*left;
 	size_t		i;
-		
+	
 	buff = 0;
 	if (left && ft_strchr2(left, '\n'))
 	{
 		i = ft_strchr2(left, '\n') + 1;
 		line = ft_substr(left, 0, i);
-		aux = ft_substr(left, i, ft_strlen(left) - i);
+		aux = ft_substr(left, i, ft_strlen(left) - i );
 		free(left);
 		left = aux;
 		return (line);
@@ -27,26 +27,18 @@ char	*get_next_line(int fd)
 	{
 		buff = malloc(sizeof(char) * BUFFER_SIZE);
 		if (read(fd, buff, BUFFER_SIZE))
-		{			
-		//	write(1, "holi", 4);
+		{
 			ft_strjoin(left, buff);
 			free(buff);
-/*			if (!(ft_strchr2(buff, '\n')))
-			{
-				write(1, "pepa", 4);
-				left = buff;
-				return (get_next_line(fd));
-			}
-*/			return get_next_line(fd);
+			return get_next_line(fd);
 		}
 		else
 		{
 			i = ft_strchr2(left, '\n') + 1;
 			line = ft_substr(left, 0, i);
-			aux = ft_substr(left, i, ft_strlen(left) - i);
+			aux = ft_substr(left, i, ft_strlen(left) - i );
 			free(left);
 			left = aux;
-			free(buff);
 			return (line);
 		}
 	}
@@ -59,11 +51,9 @@ char	*get_next_line(int fd)
 	 		free(buff);
 			return get_next_line(fd);
 		}
+
 		else
-		{
-			free(buff);
 			return 0;
-		}
 	}
 	return 0;
 }
