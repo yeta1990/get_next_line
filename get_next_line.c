@@ -71,7 +71,7 @@ char	*get_next_line(int fd)
 				return (get_next_line(fd));
 			}
 			i = ft_strchr2(left, '\n') + 1;
-			line = ft_substr(left, 0, i);
+	//		line = ft_substr(left, 0, i);
 			aux = ft_substr(left, i, ft_strlen(left) - i);
 			free(left);
 			if (ft_strlen(aux) == 0)
@@ -79,8 +79,9 @@ char	*get_next_line(int fd)
 			left = aux;
 			free(buff);
 			buff = 0;
-//			return (get_next_line(-1));
-			return (line);
+//			return (0);
+			return (get_next_line(fd));
+//			return (line);
 		}
 	}
 	else
