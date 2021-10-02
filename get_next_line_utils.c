@@ -6,7 +6,7 @@
 /*   By: albgarci <albgarci@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 19:30:47 by albgarci          #+#    #+#             */
-/*   Updated: 2021/09/29 15:35:46 by albgarci         ###   ########.fr       */
+/*   Updated: 2021/10/02 12:36:12 by albgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ char	*ft_strdup(const char *s1)
 	return (s);
 }
 
-size_t	ft_strchr2(const char *s, int c)
+int	ft_strchr2(const char *s, int c)
 {
 	size_t	i;
 	char	*s2;
@@ -47,7 +47,7 @@ size_t	ft_strchr2(const char *s, int c)
 	}
 	if (s2[i] == c)
 		return (i);
-	return (0);
+	return (-1);
 }
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -62,6 +62,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_memmove(s3, (char *)s1, ft_strlen(s1));
 	ft_memmove(s3 + ft_strlen(s1), (char *)s2, ft_strlen(s2));
 	s3[ft_strlen(s1) + ft_strlen(s2)] = '\0';
+//	printf("\ns1: %s, s2: %s\n", s1, s2);
 	return (s3);
 }
 

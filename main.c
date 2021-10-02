@@ -27,13 +27,13 @@ int	main()
 	get_next_line(fd);
 	close(fd);
 	system("leaks a.out");
-return 1;
-*/	//	printf("%i", fd);
+return 1;*/
+	//	printf("%i", fd);
 
 	printf("%s", get_next_line(fd));
 
 	printf("%s", get_next_line(fd));
-	
+/*	
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
@@ -60,6 +60,6 @@ return 1;
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));*/
 	close(fd);
 }
