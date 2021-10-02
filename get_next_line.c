@@ -16,8 +16,8 @@ char	*get_next_line(int fd)
 	buff = 0;
 	if (!fd)
 			return (0);
-//	if (fd > 2)
-//		return 0;
+	if (fd == -1)
+		return 0;
 	if (left && ft_strchr2(left, '\n') != -1)
 	{
 //		printf("j");
@@ -68,15 +68,18 @@ char	*get_next_line(int fd)
 				line = ft_strdup(left);
 				free(left);
 				free(buff);
-				return (line);
+				return (get_next_line(fd));
 			}
 			i = ft_strchr2(left, '\n') + 1;
 			line = ft_substr(left, 0, i);
 			aux = ft_substr(left, i, ft_strlen(left) - i);
 			free(left);
+			if (ft_strlen(aux) == 0)
+				return (get_next_line(-1));
 			left = aux;
 			free(buff);
 			buff = 0;
+//			return (get_next_line(-1));
 			return (line);
 		}
 	}
