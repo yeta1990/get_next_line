@@ -11,12 +11,14 @@ char	*get_next_line(int fd)
 	char		*line;
 	char		*aux;
 	static char	*left;
-	size_t		i;
-		
+	unsigned long long	i;
+
 	buff = 0;
-/*	if (fd > 2)
-		return 0;
-*/	if (left && ft_strchr2(left, '\n') != -1)
+	if (!fd)
+			return (0);
+//	if (fd > 2)
+//		return 0;
+	if (left && ft_strchr2(left, '\n') != -1)
 	{
 //		printf("j");
 
@@ -49,18 +51,14 @@ char	*get_next_line(int fd)
 		return (get_next_line(fd));*/
 
 //printf("i");
-		buff = malloc(sizeof(char) * BUFFER_SIZE);
+		buff = ft_calloc(BUFFER_SIZE + 1, sizeof(char)); //malloc(sizeof(char) * BUFFER_SIZE);
 		if (read(fd, buff, BUFFER_SIZE))
 		{
-//			printf("\nleft: %s<-", left);
-//			printf("\nbuff: %s<-", buff);
 			aux = ft_strjoin(left, buff);
-			
-//			printf("\naux: %s<-", aux);
 			free(left);
 			left = aux;
-	//		buff[BUFFER_SIZE] = '\0';
 			free(buff);
+			buff = 0;
 			return get_next_line(fd);
 		}
 		else
@@ -78,18 +76,18 @@ char	*get_next_line(int fd)
 			free(left);
 			left = aux;
 			free(buff);
+			buff = 0;
 			return (line);
 		}
 	}
 	else
 	{
-//		printf("h");
-
-		buff = malloc(sizeof(char) * BUFFER_SIZE);
+		buff = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 		if (read(fd, buff, BUFFER_SIZE))
 		{
 			left = ft_strdup(buff);
 	 		free(buff);
+			buff = 0;
 			return get_next_line(fd);
 		}
 		else

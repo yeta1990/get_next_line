@@ -33,7 +33,7 @@ return 1;*/
 	printf("%s", get_next_line(fd));
 
 	printf("%s", get_next_line(fd));
-/*	
+	
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
@@ -60,6 +60,6 @@ return 1;*/
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));*/
+	printf("%s", get_next_line(fd));
 	close(fd);
 }
