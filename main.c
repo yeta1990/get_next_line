@@ -19,8 +19,8 @@ int	main()
 
 // segfault when buffer size = size of lines
 
-	get_next_line(fd);
 /*	get_next_line(fd);
+	get_next_line(fd);
 	get_next_line(fd);
 
 	get_next_line(fd);
@@ -30,7 +30,7 @@ int	main()
 return 1;*/
 	//	printf("%i", fd);
 
-/*	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
 
 	printf("%s", get_next_line(fd));
 	
@@ -60,6 +60,6 @@ return 1;*/
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));*/
+	printf("%s", get_next_line(fd));
 	close(fd);
 }

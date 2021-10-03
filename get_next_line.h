@@ -1,9 +1,9 @@
-#ifndef GET_NEXT_LINE
-# define GET_NEXT_LINE
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 char	*get_next_line(int fd);
 char	*ft_strjoin(char const *s1, char const *s2);
@@ -13,5 +13,6 @@ int		ft_c(const char *s, int c);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	*ft_calloc(size_t count, size_t size);
 void	ft_bzero(void *s, size_t n);
+char	*ft_first_read(int fd, char *lft);
 
 #endif
