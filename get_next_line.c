@@ -14,14 +14,13 @@ char	*get_next_line(int fd)
 	static int end;
 	unsigned long long	i;
 
-	buff = 0;
-	if (!fd)
-			return (0);
-	if (fd == -1)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return 0;
+	buff = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!buff)
+		return (0);
  	if (left)
 	{
-		buff = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 		while (read(fd, buff, BUFFER_SIZE))
 		{
 			aux = ft_strjoin(left, buff);
@@ -42,13 +41,17 @@ char	*get_next_line(int fd)
 		if (!end)
 		{
 			end = 1;
-			return (left);
+			if (ft_strlen(left))
+				return (left);
+			free(left);
 		}
 		return (0);
 	}
 	else
 	{
-		buff = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	//	buff = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	//	if (!buff)
+	//		return (0);
 		if (read(fd, buff, BUFFER_SIZE))
 		{
 			left = ft_substr(buff, 0, BUFFER_SIZE + 1);
