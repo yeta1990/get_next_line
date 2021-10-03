@@ -14,8 +14,8 @@ int	main()
 	int	i;
 
 	i = 0;
-	fd = open("pepe", O_RDONLY);
-
+	fd = open("gnlTester/files/41_with_nl", O_RDONLY);
+//	fd = open("pepe", O_RDONLY);
 
 // segfault when buffer size = size of lines
 
