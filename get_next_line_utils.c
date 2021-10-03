@@ -6,30 +6,11 @@
 /*   By: albgarci <albgarci@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 19:30:47 by albgarci          #+#    #+#             */
-/*   Updated: 2021/10/02 19:00:33 by albgarci         ###   ########.fr       */
+/*   Updated: 2021/10/03 20:27:51 by albgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-int	ft_c(const char *s, int c)
-{
-	size_t	i;
-	char	*s2;
-
-	i = 0;
-	c = (char) c;
-	s2 = (char *)s;
-	while (s2[i])
-	{
-		if (s2[i] == c)
-			return (i + 1);
-		i++;
-	}
-	if (s2[i] == c)
-		return (i + 1);
-	return (-1);
-}
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -64,7 +45,11 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	if (!s)
 		return (0);
 	if (start >= ft_strlen(s))
-		return (s2 = ft_calloc(sizeof(char), 1));
+	{
+		s2 = malloc(sizeof(char));
+		s2[0] = '\0';
+		return (s2);
+	}
 	if (len >= ft_strlen(s))
 		size = ft_strlen(s) - start + 1;
 	else
@@ -103,17 +88,6 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		i++;
 	}
 	return (dst);
-}
-
-void	*ft_calloc(size_t count, size_t size)
-{
-	void	*str;
-
-	str = malloc(size * count);
-	if (!str)
-		return (0);
-	ft_bzero(str, count * size);
-	return (str);
 }
 
 void	ft_bzero(void *s, size_t n)
