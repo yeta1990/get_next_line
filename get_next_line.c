@@ -18,6 +18,15 @@ char	*get_next_line(int fd)
 		return (0);
  	if (left)
 	{
+		if (ft_strchr2(left, '\n') != -1)
+		{
+			i = ft_strchr2(left, '\n') + 1;
+			line = ft_substr(left, 0, i);
+			aux = ft_substr(left, i, ft_strlen(left) - i);
+			free(left);
+			left = aux;
+			return (line);
+		}
 		buff = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 		if (!buff)
 			return (0);
@@ -28,24 +37,9 @@ char	*get_next_line(int fd)
 			left = aux;
 			if (ft_strchr2(buff, '\n') != -1)
 			{
-				i = ft_strchr2(left, '\n') + 1;
-				line = ft_substr(left, 0, i);
-				aux = ft_substr(left, i, ft_strlen(left) - i);
-				free(left);
-				left = aux;
 				free(buff);
-				return (line);
+				return (get_next_line(fd));
 			}
-		}
-		if (ft_strchr2(left, '\n') != -1)
-		{
-			i = ft_strchr2(left, '\n') + 1;
-			line = ft_substr(left, 0, i);
-			aux = ft_substr(left, i, ft_strlen(left) - i);
-			free(left);
-			left = aux;
-			free(buff);
-			return (line);
 		}
 		free(buff);
 		if (!end)
@@ -69,11 +63,7 @@ char	*get_next_line(int fd)
 			buff = 0;
 			return get_next_line(fd);
 		}
-		else
-		{
-			free(buff);
-			return 0;
-		}
+		free(buff);
 	}
 	return 0;
 }
