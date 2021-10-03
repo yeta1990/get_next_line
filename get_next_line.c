@@ -49,9 +49,9 @@ char	*get_next_line(int fd)
 	}
 	else
 	{
-	//	buff = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	//	if (!buff)
-	//		return (0);
+		buff = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+		if (!buff)
+			return (0);
 		if (read(fd, buff, BUFFER_SIZE))
 		{
 			left = ft_substr(buff, 0, BUFFER_SIZE + 1);
