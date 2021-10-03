@@ -40,6 +40,7 @@ char	*get_next_line(int fd)
 				free(buff);
 				return (get_next_line(fd));
 			}
+			ft_bzero(buff, BUFFER_SIZE + 1);
 		}
 		free(buff);
 		if (!end)

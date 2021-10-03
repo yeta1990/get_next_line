@@ -14,13 +14,13 @@ int	main()
 	int	i;
 
 	i = 0;
-	fd = open("gnlTester/files/42_with_nl", O_RDONLY);
+	fd = open("gnlTester/files/big_line_no_nl", O_RDONLY);
 //	fd = open("pepe", O_RDONLY);
 
 // segfault when buffer size = size of lines
 
-/*	get_next_line(fd);
 	get_next_line(fd);
+/*	get_next_line(fd);
 	get_next_line(fd);
 
 	get_next_line(fd);
@@ -30,12 +30,12 @@ int	main()
 return 1;*/
 	//	printf("%i", fd);
 
-	printf("%s", get_next_line(fd));
+/*	printf("%s", get_next_line(fd));
 
 	printf("%s", get_next_line(fd));
 	
 	printf("%s", get_next_line(fd));
-/*	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
