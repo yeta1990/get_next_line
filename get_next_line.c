@@ -1,30 +1,23 @@
-
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-
 #include "get_next_line.h"
 
 char	*get_next_line(int fd)
 {
-	char		*buff;
-	char		*line;
-	char		*aux;
-	static char	*left;
-	static int end;
-	unsigned long long	i;
+	char				*buff;
+	char				*line;
+	char				*aux;
+	static char			*lft;
+	static int			end;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (0);
- 	if (left)
+ 	if (lft)
 	{
-		if (ft_strchr2(left, '\n') != -1)
+		if (ft_c(lft, 10) != -1)
 		{
-			i = ft_strchr2(left, '\n') + 1;
-			line = ft_substr(left, 0, i);
-			aux = ft_substr(left, i, ft_strlen(left) - i);
-			free(left);
-			left = aux;
+			line = ft_substr(lft, 0, ft_c(lft, 10));
+			aux = ft_substr(lft, ft_c(lft, 10), ft_strlen(lft) - ft_c(lft, 10));
+			free(lft);
+			lft = aux;
 			return (line);
 		}
 		buff = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
@@ -32,10 +25,10 @@ char	*get_next_line(int fd)
 			return (0);
 		while (read(fd, buff, BUFFER_SIZE))
 		{
-			aux = ft_strjoin(left, buff);
-			free(left);
-			left = aux;
-			if (ft_strchr2(buff, '\n') != -1)
+			aux = ft_strjoin(lft, buff);
+			free(lft);
+			lft = aux;
+			if (ft_c(buff, '\n') != -1)
 			{
 				free(buff);
 				return (get_next_line(fd));
@@ -46,9 +39,9 @@ char	*get_next_line(int fd)
 		if (!end)
 		{
 			end = 1;
-			if (ft_strlen(left))
-				return (left);
-			free(left);
+			if (ft_strlen(lft))
+				return (lft);
+			free(lft);
 		}
 		return (0);
 	}
@@ -59,7 +52,7 @@ char	*get_next_line(int fd)
 			return (0);
 		if (read(fd, buff, BUFFER_SIZE))
 		{
-			left = ft_substr(buff, 0, BUFFER_SIZE + 1);
+			lft = ft_substr(buff, 0, BUFFER_SIZE + 1);
 	 		free(buff);
 			buff = 0;
 			return get_next_line(fd);
