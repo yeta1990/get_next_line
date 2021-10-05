@@ -6,7 +6,7 @@
 /*   By: albgarci <albgarci@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 20:28:00 by albgarci          #+#    #+#             */
-/*   Updated: 2021/10/04 09:14:04 by albgarci         ###   ########.fr       */
+/*   Updated: 2021/10/05 14:28:18 by albgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*get_next_line(int fd)
 	static char			*lft;
 	static int			end;
 
-	if (fd < 0 || fd > 4 || fd == 3 || BUFFER_SIZE <= 0)
+	if (fd < 0 || read(fd, &end, 0) == -1 || BUFFER_SIZE <= 0)
 		return (0);
 	if (!lft)
 		lft = (ft_first_read(fd, lft));
