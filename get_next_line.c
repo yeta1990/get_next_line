@@ -6,7 +6,7 @@
 /*   By: albgarci <albgarci@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 20:28:00 by albgarci          #+#    #+#             */
-/*   Updated: 2021/10/05 14:28:18 by albgarci         ###   ########.fr       */
+/*   Updated: 2021/10/13 12:30:23 by albgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ char	*ft_first_read(int fd, char *lft)
 	char	*buff;
 
 	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	ft_bzero(buff, BUFFER_SIZE + 1);
 	if (!buff)
 		return (0);
+	ft_bzero(buff, BUFFER_SIZE + 1);
 	if (read(fd, buff, BUFFER_SIZE))
 	{
 		lft = ft_substr(buff, 0, BUFFER_SIZE + 1);
@@ -74,9 +74,9 @@ int	ft_read_loop(int fd, char **lft)
 	char	*buff;
 
 	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	ft_bzero(buff, BUFFER_SIZE + 1);
 	if (!buff)
 		return (0);
+	ft_bzero(buff, BUFFER_SIZE + 1);
 	while (read(fd, buff, BUFFER_SIZE))
 	{
 		aux = ft_strjoin(*lft, buff);

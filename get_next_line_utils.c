@@ -6,7 +6,7 @@
 /*   By: albgarci <albgarci@student.42madrid>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 19:30:47 by albgarci          #+#    #+#             */
-/*   Updated: 2021/10/03 20:27:51 by albgarci         ###   ########.fr       */
+/*   Updated: 2021/10/13 12:38:21 by albgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,10 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	return (dst);
 }
 
-void	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, unsigned long n)
 {
-	size_t	i;
-	char	*str;
+	unsigned long	i;
+	char			*str;
 
 	str = (char *) s;
 	i = 0;
