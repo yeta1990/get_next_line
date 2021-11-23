@@ -6,7 +6,7 @@
 /*   By: albgarci <albgarci@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/03 20:28:00 by albgarci          #+#    #+#             */
-/*   Updated: 2021/10/13 12:30:23 by albgarci         ###   ########.fr       */
+/*   Updated: 2021/11/23 17:55:51 by albgarci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ char	*get_next_line(int fd)
 {
 	static char			*lft;
 	static int			end;
+	int					c;
+	char				*last;
 
+	c = 0;
 	if (fd < 0 || read(fd, &end, 0) == -1 || BUFFER_SIZE <= 0)
 		return (0);
 	if (!lft)
@@ -25,14 +28,15 @@ char	*get_next_line(int fd)
 		return (0);
 	if (ft_c(lft, 10) != -1)
 		return (ft_create_line(&lft));
-	if (ft_read_loop(fd, &lft))
+	c = ft_read_loop(fd, &lft);
+	if (c > 0)
 		return (get_next_line(fd));
-	if (!end)
+	else if (c == 0 || (lft))
 	{
-		end = 1;
-		if (ft_strlen(lft))
-			return (lft);
+		last = ft_strjoin("", lft);
 		free(lft);
+		lft = 0;
+		return (last);
 	}
 	return (0);
 }
@@ -46,6 +50,11 @@ char	*ft_create_line(char **lft)
 	aux = ft_substr(*lft, ft_c(*lft, 10), ft_strlen(*lft) - ft_c(*lft, 10));
 	free(*lft);
 	*lft = aux;
+	if (ft_strlen(*lft) == 0)
+	{
+		free(*lft);
+		*lft = 0;
+	}
 	return (line);
 }
 
@@ -72,7 +81,9 @@ int	ft_read_loop(int fd, char **lft)
 {
 	char	*aux;
 	char	*buff;
+	int		j;
 
+	j = -1;
 	buff = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	if (!buff)
 		return (0);
@@ -88,9 +99,10 @@ int	ft_read_loop(int fd, char **lft)
 			return (1);
 		}
 		ft_bzero(buff, BUFFER_SIZE + 1);
+		j = 0;
 	}
 	free(buff);
-	return (0);
+	return (j);
 }
 
 int	ft_c(const char *s, int c)
